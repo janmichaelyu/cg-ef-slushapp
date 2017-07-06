@@ -75,19 +75,19 @@ Edit the `/deploy/local.properties` file as follows...
 - Update `content-forests-per-host` to match the setup of your CG EF Data Hub `FINAL` database (default would be 4)
 - Add the following lines to the end of the file, after the Admin username/password section, and update the DB names below to match the database names you setup with your CF EF Data Hub.
 
-    # The role that is given permissions and execute privileges
+    `# The role that is given permissions and execute privileges
     app-role=data-hub-role
     
-    ## Security
-    # The authentication used for your appserver
-    #
+    `## Security
+    `# The authentication used for your appserver
+    `#
     authentication-method=digest
     default-user=admin
 
-    # The names of your databases. Forests are given the same names
-    #
-    content-db=data-hub-v1-FINAL
-    modules-db=data-hub-v1-MODULES
+    `# The names of your databases. Forests are given the same names
+    `#
+    'content-db=data-hub-v1-FINAL
+    'modules-db=data-hub-v1-MODULES
     schemas-db=data-hub-v1-SCHEMAS
     triggers-db=data-hub-v1-TRIGGERS
 
