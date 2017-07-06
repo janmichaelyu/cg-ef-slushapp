@@ -76,6 +76,7 @@ Edit the `/deploy/local.properties` file as follows...
 - Add the following lines to the end of the file, after the Admin username/password section, and update the DB names below to match the database names you setup with your CF EF Data Hub
 
 _
+
     app-role=data-hub-role
     
     authentication-method=digest
