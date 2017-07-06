@@ -98,23 +98,29 @@ Edit the `local.json` file as follows...
 - Update `ml-app-pass` to your admin password
 - Ensure `ml-host` and `ml-http-port` are pointed to your CG EF Data Hub `FINAL` database
 
-Run `gulp serve-local`. This will start the Slush application and should open a new web browser window pointed to localhost:9070. This is your Slush search application.
+Run `./ml local deploy modules` to install Slush server code to your MarkLogic server.
+
+Run `gulp serve-local`. This will start the Slush application and should open a new web browser window pointed to `localhost:9070`. This is your Slush search application.
 
 Login to the web application using your admin username and password.
 
-You should now be able to navigate to the Search page and see the data from your `FINAL` database.
+You should now be able to navigate to the Search page and see the data coming from your `FINAL` database.
 
 Open another web browser window and go to the MarkLogic admin console (`localhost:8001`). You will need to login with your admin credentials.
 
 In the Databases window, click on your `FINAL` database. On the left side menu, click on Path Range Indexes and add the following two indexes...
 
-type: string
-path exp: Description
-collation: http://marklogic.com/collation/codepoint
-range val pos: false
-invalid: reject
+    scalar type:            string
+    path expression:        Description
+    collation:              http://marklogic.com/collation/codepoint
+    range value positions:  false
+    invalid values:         reject
 
-path exp: ConsultantName
+    scalar type:            string
+    path expression:        ConsultantName
+    collation:              http://marklogic.com/collation/codepoint
+    range value positions:  false
+    invalid values:         reject
 
 Click **ok**.
 
