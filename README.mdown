@@ -37,7 +37,7 @@ Microsoft Windows users should also read the [Additional Microsoft Windows Requi
     /Users/mmoody/Projects/cg-expertfinder
         /cg-ef-datahub
 
-And through the steps below, you will create another project folder here for the Slush application.
+And by following the steps below, you will create another project folder here for the Slush application.
 
 **...**
 
@@ -53,20 +53,58 @@ This will copy the contents of this code repository into a new folder called `cg
 
 In your terminal, navigate to your new `/cg-ef-slushapp` directory.
 
+Run `npm install`.
+
+Run `bower install`.
+
+Run `gulp init-local`, and specify the following,
+
+- MarkLogic version? **8**
+- MarkLogic host? **leave default for localhost, or set to MarkLogic hostname**
+- MarkLogic Admin User/Password? **enter admin user and admin password**
+- MarkLogic App/Rest port? **MarkLogic port that points to CF EF Data Hub FINAL database**
+- Node app port? **leave default**
+- Allow anonymous...? **leave default, false**
+- Disallow proxying...? **leave default, false**
+- Only allow access...? **leave default, false**
+
+Edit the `/deploy/local.properties` file as follows...
+
+- Update `server-version` to **9**
+- Ensure `local-server` and `app-port` are pointed to your CG EF Data Hub `FINAL` database
+- Update `content-forests-per-host` to match the setup of your CG EF Data Hub `FINAL` database (default would be 4)
+- Add the following lines to the end of the file, after the Admin username/password section, and update the DB names below to match the database names you setup with your CF EF Data Hub.
+
+    # The role that is given permissions and execute privileges
+    app-role=data-hub-role
+    
+    ## Security
+    # The authentication used for your appserver
+    #
+    authentication-method=digest
+    default-user=admin
+
+    # The names of your databases. Forests are given the same names
+    #
+    content-db=data-hub-v1-FINAL
+    modules-db=data-hub-v1-MODULES
+    schemas-db=data-hub-v1-SCHEMAS
+    triggers-db=data-hub-v1-TRIGGERS
+
+Edit the `local.json` file as follows...
+
+- Update `ml-version` to **9**
+- Update `ml-app-user` to **admin**
+- Update `ml-app-pass` to your admin password
+- Ensure `ml-host` and `ml-http-port` are pointed to your CG EF Data Hub `FINAL` database
+
+Run `gulp serve-local`. This will start the Slush application and should open a new web browser window pointed to localhost:9070. This is your Slush search application.
+
+Login to the web application using your admin username and password.
+
+You should now be able to navigate to the ...
 
 
-
-
-
-## Contents
-
-This `cg-ef-datahub` directory will contain two directories: `/input` and `/plugins`.
-
-The `/plugins` folder contains the Ingest and Harmonise routines that we will use within the Data Hub.
-
-The `/input` folder contains subfolders for each source data file that will be ingested using Data Hub. Also contained here, you will find a number of `_BLANK.csv` files -- these are placeholders for the actual source data files that you will be ingesting. Replace the `_BLANK.csv` files with the actual source CSV files.
-
-**IMPORTANT:** You must ensure that your actual source CSV files have the same structure as the `_BLANK.csv` files provided.
 
 ## Instructions
 
