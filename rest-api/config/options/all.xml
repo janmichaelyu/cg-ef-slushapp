@@ -102,13 +102,32 @@
   </constraint>
 
   <constraint name="Name">
-    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+    <range type="xs:string" facet="false" collation="http://marklogic.com/collation/codepoint">
       <!-- <facet-option>limit=5</facet-option>
       <facet-option>item-order</facet-option>
       <facet-option>descending</facet-option> -->
       <path-index>ConsultantName</path-index>
     </range>
   </constraint>
+
+  <constraint name="Grade">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>item-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index>Resource_Grade</path-index>
+    </range>
+  </constraint>
+
+  <constraint name="Location">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>item-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index>Resource_Location</path-index>
+    </range>
+  </constraint>
+
 <!--
   <constraint name="gender">
     <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">

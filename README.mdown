@@ -78,19 +78,18 @@ Edit the `/deploy/local.properties` file as follows...
 _
 
     app-role=data-hub-role
-    
+
     authentication-method=digest
-    
+
     default-user=admin
-    
+
     content-db=data-hub-v1-FINAL
-    
+
     modules-db=data-hub-v1-MODULES
-    
+
     schemas-db=data-hub-v1-SCHEMAS
-    
+
     triggers-db=data-hub-v1-TRIGGERS
-_
 
 Edit the `local.json` file as follows...
 
