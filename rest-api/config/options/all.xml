@@ -50,11 +50,8 @@
   </sort-order>
 
   <!-- Not used, but the default snippeting behavior if no state (see compact/detailed below) was specified -->
-  <transform-results apply="snippet">
-    <preferred-elements><element ns="" name="body"/></preferred-elements>
-    <max-matches>1</max-matches>
-    <max-snippet-chars>150</max-snippet-chars>
-    <per-match-tokens>20</per-match-tokens>
+  <transform-results apply="extractedToJson"
+                     at="/extractedToJson.sjs">
   </transform-results>
 
   <return-query>1</return-query>
@@ -174,9 +171,7 @@
   </suggestion-source>
   -->
 
-  <!-- This will extract the latitude and longitude from the search. -->
-  <extract-document-data selected="include">
-    <extract-path>//location</extract-path>
+  <extract-document-data selected="all">
   </extract-document-data>
 
 </options>

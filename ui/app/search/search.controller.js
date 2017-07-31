@@ -3,7 +3,18 @@
   'use strict';
 
   angular.module('app.search')
-    .controller('SearchCtrl', SearchCtrl);
+    .controller('SearchCtrl', SearchCtrl)
+    .filter('nameFilter', NameFilter);
+
+  function NameFilter () {
+    return function(input) {
+      var txt = '';
+      var x2js = new X2JS();
+      txt = x2js.xml_str2json(input).envelope.content.consultant.ConsultantName;
+
+      return txt;
+    };
+  }
 
   SearchCtrl.$inject = ['$scope', '$location', 'MLSearchFactory'];
 
