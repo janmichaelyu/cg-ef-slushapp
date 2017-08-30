@@ -1,7 +1,18 @@
 <div ng-repeat="result in results track by $index" class="result">
   <h4>
-    <a ui-sref="root.view({uri: result.uri})">{{result.extracted.content[0] | nameFilter}}</a>
+    <a ui-sref="root.view({uri: result.uri})">
+      {{result.extracted.transformed.envelope.content.consultant.ConsultantName || result.uri}}
+    </a>
   </h4>
+  <!--<div>{{result}}</div>-->
+  <div ng-if="result.extracted.transformed.envelope.content.consultant.ConsultantName">
+    <span>Grade:</span>
+      <em>{{result.extracted.transformed.envelope.content.consultant.assignments.Resource_Grade}},</em>
+    <span>Location:</span>
+      <em>{{result.extracted.transformed.envelope.content.consultant.assignments.Resource_Location}},</em>
+    <span>Team:</span>
+      <em>{{result.extracted.transformed.envelope.content.consultant.assignments.Resource_Team}}</em>
+  </div>
   <div class="matches">
     <div class="match" ng-repeat="match in result.matches track by $index">
       <em ng-repeat="text in match['match-text'] track by $index">

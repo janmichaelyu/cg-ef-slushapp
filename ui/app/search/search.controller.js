@@ -16,13 +16,14 @@
     };
   }
 
-  SearchCtrl.$inject = ['$scope', '$location', 'MLSearchFactory'];
+  SearchCtrl.$inject = ['$scope', '$location', 'MLSearchFactory',
+  'x2js', '$log'];
 
   // inherit from MLSearchController
   var superCtrl = MLSearchController.prototype;
   SearchCtrl.prototype = Object.create(superCtrl);
 
-  function SearchCtrl($scope, $location, searchFactory) {
+  function SearchCtrl($scope, $location, searchFactory, x2js, $log) {
     var ctrl = this;
 
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());
@@ -33,5 +34,22 @@
       ctrl.mlSearch.setSnippet(type);
       ctrl.search();
     };
+
+
+    $scope.$watch(function(){
+      return ctrl.response.results;
+    }, function (newVal, oldVal) {
+      //transform
+      var results = [];
+
+      angular.forEach(ctrl.response.results, function (result) {
+        result.extracted.transformed = x2js.xml_str2json(result.extracted.content[0]);
+        $log.debug('result.extracted.transformed', result.extracted.transformed);
+        results.push(result);
+      });
+
+      ctrl.results = results;
+    });
+
   }
 }());
