@@ -67,7 +67,7 @@
     "karma-notify-reporter": "^0.1.1",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sinon": "^1.0.4",
-    "lodash": "^3.9.3",
+    "lodash": "^4.17.19",
     "mocha": "^2.2.5",
     "node-notifier": "^4.2.3",
     "os-homedir": "^1.0.2",
